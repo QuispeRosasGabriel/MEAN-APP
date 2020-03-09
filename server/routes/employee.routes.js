@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const employeeList = require("../controllers/employee.controller");
 
-router.get("/", (req, res) => {
-  res.json({
-    nombre: "Mario",
-    ocupacion: "Programador",
-    edad: 20
-  });
-});
+router.get("/", employeeList.getEmployees);
+router.post("/", employeeList.createEmployee);
+router.get("/:id", employeeList.getEmployee);
+router.put("/:id", employeeList.editEmployee);
+router.delete("/:id", employeeList.deleteEmployee);
 
 module.exports = router;

@@ -13,7 +13,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 //routes
-app.use(require("./routes/employee.routes"));
+app.use("/api/employees", require("./routes/employee.routes"));
 
 //Start Server
 app.listen(app.get("port"), () => {
