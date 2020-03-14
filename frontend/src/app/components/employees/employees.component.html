@@ -3,10 +3,52 @@
     <div class="col s5">
       <div class="card">
         <div class="card-content">
-          <form
-            (ngSubmit)="addEmployee(employeeForm)"
-            #employeeForm="ngForm"
-          ></form>
+          <form (ngSubmit)="addEmployee(employeeForm)" #employeeForm="ngForm">
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  type="text"
+                  name="name"
+                  #name="ngModel"
+                  [(ngModel)]="employeeService.selectedEmployee.name"
+                  placeholder="Ingresa tu nombre"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  type="text"
+                  name="position"
+                  #position="ngModel"
+                  [(ngModel)]="employeeService.selectedEmployee.position"
+                  placeholder="Ingresa tu cargo"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  type="text"
+                  name="office"
+                  #office="ngModel"
+                  [(ngModel)]="employeeService.selectedEmployee.office"
+                  placeholder="Ingresa tu nombre"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  type="text"
+                  name="salary"
+                  #salary="ngModel"
+                  [(ngModel)]="employeeService.selectedEmployee.salary"
+                  placeholder="Ingresa tu salario"
+                />
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
