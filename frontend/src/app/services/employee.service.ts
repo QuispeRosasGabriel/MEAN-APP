@@ -28,7 +28,7 @@ export class EmployeeService {
   }
 
   deleteEmployee(employee: Employee) {
-    return this.http.delete(this.URL_API + `${employee._id}`);
+    return this.http.delete(this.URL_API + `/${employee._id}`);
   }
 
 }

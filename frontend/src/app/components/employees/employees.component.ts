@@ -19,12 +19,22 @@ export class EmployeesComponent implements OnInit {
   }
 
   addEmployee(form?: NgForm) {
-    this.employeeService.postEmployee(form.value).subscribe(
-      res => {
-        this.resetForm(form)
-        M.toast({ html: "Empleado guardado satisfactoriamente" })
-      }
-    )
+    if (form.value._id) {
+      this.employeeService.putEmployee(form.value)
+        .subscribe(res => {
+          this.resetForm(form)
+          M.toast({ html: "Empleado actualizado satisfactoriamente" })
+          this.getEmployees()
+        })
+    } else {
+      this.employeeService.postEmployee(form.value).subscribe(
+        res => {
+          this.resetForm(form)
+          M.toast({ html: "Empleado guardado satisfactoriamente" })
+          this.getEmployees()
+        }
+      )
+    }
   }
 
   getEmployees() {
@@ -34,6 +44,21 @@ export class EmployeesComponent implements OnInit {
         console.log(res);
 
       })
+  }
+
+  editEmployee(employee: Employee) {
+    this.employeeService.selectedEmployee = employee;
+
+  }
+
+  deleteEmployee(_id: Employee) {
+    if (confirm) {
+      this.employeeService.deleteEmployee(_id)
+        .subscribe(
+          res => this.getEmployees()
+        )
+      M.toast({ html: 'Borrado Satisfactoriamente' })
+    }
   }
 
   resetForm(form?: NgForm) {

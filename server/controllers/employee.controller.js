@@ -9,7 +9,12 @@ employeeController.createEmployee = async (req, res) => {
   //Usor req.body para obtener y entender el json que va a enviar angular
   console.log(req.body);
   //Aqui uso req body para que lo que me envia angular se acomode al modelo que manejo en el servidor
-  const employee = new Employee(req.body);
+  const employee = new Employee({
+    name: req.body.name,
+    position: req.body.position,
+    office: req.body.office,
+    salary: req.body.salary
+  });
   try {
     await employee.save();
   } catch (error) {
