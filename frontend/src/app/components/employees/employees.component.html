@@ -33,7 +33,7 @@
                   name="office"
                   #office="ngModel"
                   [(ngModel)]="employeeService.selectedEmployee.office"
-                  placeholder="Ingresa tu nombre"
+                  placeholder="Ingresa tu oficina"
                 />
               </div>
             </div>
@@ -46,6 +46,14 @@
                   [(ngModel)]="employeeService.selectedEmployee.salary"
                   placeholder="Ingresa tu salario"
                 />
+              </div>
+              <div class="card-action">
+                <div class="input-field col s12">
+                  <button class="btn right">Grabar</button>
+                  <button class="btn left" (click)="resetForm(employeeForm)">
+                    Limpiar
+                  </button>
+                </div>
               </div>
             </div>
           </form>
